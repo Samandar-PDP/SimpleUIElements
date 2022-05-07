@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SimpleUIElements</string>
+    <string name="lan">Java, Kotlin, Dart, JavaScript, C++, C, Python</string>
+    <string name="checkedTextView">Checked Text View</string>
+</resources>
