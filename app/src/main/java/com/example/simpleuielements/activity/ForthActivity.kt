@@ -40,7 +40,7 @@ class ForthActivity : AppCompatActivity() {
         val listView: ListView = findViewById(R.id.listView)
         val arrAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, languages)
         listView.adapter = arrAdapter
-        listView.setOnItemClickListener { parent, view, position, id ->
+        listView.setOnItemClickListener { _, _, position, _ ->
             toast("Clicked ${position.plus(1)}")
         }
     }

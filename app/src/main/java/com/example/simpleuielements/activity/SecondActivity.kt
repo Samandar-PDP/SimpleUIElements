@@ -38,7 +38,7 @@ class SecondActivity : AppCompatActivity() {
         findViewById<View>(R.id.customDialog).setOnClickListener { customAlertDialog() }
         findViewById<View>(R.id.horizontalProgressDialog).setOnClickListener { horizontalProgressDialog() }
         findViewById<View>(R.id.btnGoThird).setOnClickListener {
-            val intent = Intent(this, ForthActivity::class.java)
+            val intent = Intent(this, ThirdActivity::class.java)
             startActivity(intent)
         }
     }
