@@ -147,9 +147,11 @@ class MainActivity : AppCompatActivity() {
         val btnClick: AppCompatButton = findViewById(R.id.btnStart)
 
         btnClick.setOnClickListener {
-            progressDialog.setTitle("Progress Dialog")
-            progressDialog.setMessage("Loading...")
-            progressDialog.show()
+            progressDialog.apply {
+                setTitle("Progress Dialog")
+                setMessage("Loading...")
+                show()
+            }
         }
     }
 
@@ -198,9 +200,6 @@ class MainActivity : AppCompatActivity() {
             if (chBoxKotlin.isChecked) {
                 sb.append("Kotlin ")
             }
-//            if (chBoxJava.isChecked && chBoxKotlin.isChecked) {
-//                sb.append("Java, Kotlin")
-//            }
             if (sb.isNotEmpty()) {
                 toast(sb.toString())
             } else {
@@ -208,5 +207,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }

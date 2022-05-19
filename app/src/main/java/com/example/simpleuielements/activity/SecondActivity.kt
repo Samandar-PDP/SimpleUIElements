@@ -37,8 +37,9 @@ class SecondActivity : AppCompatActivity() {
         findViewById<View>(R.id.progressDialog).setOnClickListener { progressDialog() }
         findViewById<View>(R.id.customDialog).setOnClickListener { customAlertDialog() }
         findViewById<View>(R.id.horizontalProgressDialog).setOnClickListener { horizontalProgressDialog() }
+
         findViewById<View>(R.id.btnGoThird).setOnClickListener {
-            val intent = Intent(this, ThirdActivity::class.java)
+            val intent = Intent(this, ForthActivity::class.java)
             startActivity(intent)
         }
     }
@@ -48,6 +49,19 @@ class SecondActivity : AppCompatActivity() {
         progressDialog.setTitle("Circular Progress Dialog")
         progressDialog.setMessage("Loading...")
         progressDialog.show()
+    }
+
+    private fun simpleDialog() {
+        val alertDialog = AlertDialog.Builder(this).create()
+        alertDialog.setTitle("Simple AlertDialog")
+        alertDialog.setMessage("please click this option")
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEUTRAL,
+            "OK"
+        ) { dialog: DialogInterface, _: Int ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
     }
 
     private fun horizontalProgressDialog() {
@@ -84,8 +98,7 @@ class SecondActivity : AppCompatActivity() {
     private fun customAlertDialog() {
         val factory = LayoutInflater.from(this)
         val dialogView: View = factory.inflate(R.layout.alert_dialog_custom, null)
-        val dialog = AlertDialog.Builder(this)
-            .create()
+        val dialog = AlertDialog.Builder(this).create()
         dialog.setView(dialogView)
         dialogView.findViewById<View>(R.id.btnYes).setOnClickListener { dialog.dismiss() }
         dialogView.findViewById<View>(
@@ -127,25 +140,13 @@ class SecondActivity : AppCompatActivity() {
 
     private fun multiSelectionDialog() {
         val choices = arrayOf<CharSequence>("Choice 1", "Choice 2", "Choice 3")
-        val choicesInitial = booleanArrayOf(false, false, false)
+        val choicesInitial = booleanArrayOf(true, false, true)
         val alertDialog =
             AlertDialog.Builder(this).setTitle("Choice Option").setPositiveButton("Accept", null)
                 .setNeutralButton("Cancel", null).setMultiChoiceItems(
                     choices,
                     choicesInitial
                 ) { _: DialogInterface?, _: Int, _: Boolean -> }
-        alertDialog.show()
-    }
-
-    private fun simpleDialog() {
-        val alertDialog = AlertDialog.Builder(this)
-            .create()
-        alertDialog.setTitle("Simple AlertDialog")
-        alertDialog.setMessage("please click this option")
-        alertDialog.setButton(
-            AlertDialog.BUTTON_NEUTRAL,
-            "OK"
-        ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
         alertDialog.show()
     }
 

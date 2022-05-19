@@ -4,29 +4,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.simpleuielements.R
+import com.example.simpleuielements.adapter.ListAdapter
+import com.example.simpleuielements.util.ObjectList
+import com.example.simpleuielements.util.ObjectList.footballerList
 import com.example.simpleuielements.util.toast
 
 class ForthActivity : AppCompatActivity() {
 
-    private val languages = arrayOf(
-        "Java",
-        "Kotlin",
-        "Dart",
-        "JavaScript",
-        "C++",
-        "C",
-        "Python",
-        "HTML",
-        "CSS",
-        "Angular",
-        "Android",
-        "Flutter",
-        "Swift",
-        "iOS",
-        "KMM",
-        "Jetpack Compose"
-    )
+    private lateinit var listView: ListView
+    private lateinit var listAdapter: ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +25,8 @@ class ForthActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        val listView: ListView = findViewById(R.id.listView)
-        val arrAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, languages)
-        listView.adapter = arrAdapter
-        listView.setOnItemClickListener { _, _, position, _ ->
-            toast("Clicked ${position.plus(1)}")
-        }
+        listView = findViewById(R.id.listView)
+        listAdapter = ListAdapter(this, footballerList())
+        listView.adapter = listAdapter
     }
 }

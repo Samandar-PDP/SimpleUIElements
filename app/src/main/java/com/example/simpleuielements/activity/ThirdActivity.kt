@@ -18,13 +18,17 @@ class ThirdActivity : AppCompatActivity() {
         setContentView(R.layout.activity_third)
 
         initViews()
-
     }
 
     private fun initViews() {
-        webView = findViewById(R.id.webView)
         btnSearch = findViewById(R.id.btnSearch)
         editSearch = findViewById(R.id.editSearch)
+        webView = findViewById(R.id.webView)
+
+        webView.webViewClient = WebViewClient()
+        webView.settings.javaScriptEnabled = true
+        webView.settings.setSupportZoom(true)
+
         btnSearch.setOnClickListener {
             searchSite()
         }
@@ -33,12 +37,9 @@ class ThirdActivity : AppCompatActivity() {
     private fun searchSite() {
         val query: String = editSearch.text.toString().trim()
         if (query.isNotEmpty()) {
-            webView.loadUrl(query)
-            val webSettings = webView.settings
-            webSettings.javaScriptEnabled = true
-            webView.webViewClient = WebViewClient()
+            webView.loadUrl("https://$query")
         } else {
-            toast("Please enter query")
+            toast("Enter query")
         }
     }
 

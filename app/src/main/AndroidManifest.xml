@@ -13,6 +13,9 @@
         android:theme="@style/Theme.SimpleUIElements"
         android:usesCleartextTraffic="true" >
         <activity
+            android:name=".FiveThActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ForthActivity"
             android:exported="false" />
         <activity
