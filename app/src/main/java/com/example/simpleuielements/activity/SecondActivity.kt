@@ -44,13 +44,6 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    private fun progressDialog() {
-        val progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Circular Progress Dialog")
-        progressDialog.setMessage("Loading...")
-        progressDialog.show()
-    }
-
     private fun simpleDialog() {
         val alertDialog = AlertDialog.Builder(this).create()
         alertDialog.setTitle("Simple AlertDialog")
@@ -62,6 +55,59 @@ class SecondActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         alertDialog.show()
+    }
+
+    private fun confirmDialog() {
+        val alertDialog = AlertDialog.Builder(this)
+            .create()
+        alertDialog.setTitle("Confirm AlertDialog")
+        alertDialog.setMessage("This is Confirm Alert Dialog")
+        alertDialog.setButton(
+            AlertDialog.BUTTON_POSITIVE,
+            "ACCEPT"
+        ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+        alertDialog.setButton(
+            AlertDialog.BUTTON_NEGATIVE,
+            "DECLINE"
+        ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+        alertDialog.show()
+    }
+
+    private fun multiSelectionDialog() {
+        val choices = arrayOf<CharSequence>("Choice 1", "Choice 2", "Choice 3")
+        val choicesInitial = booleanArrayOf(true, false, true)
+        val alertDialog =
+            AlertDialog.Builder(this).setTitle("Choice Option").setPositiveButton("Accept", null)
+                .setNeutralButton("Cancel", null).setMultiChoiceItems(
+                    choices,
+                    choicesInitial
+                ) { _: DialogInterface?, _: Int, _: Boolean -> }
+        alertDialog.show()
+    }
+
+    private fun singleChoiceDialog() {
+        val alertDialog =
+            AlertDialog.Builder(this)
+        alertDialog.setTitle("Single Choice Dialog")
+        alertDialog.setPositiveButton("OK", null)
+        alertDialog.setNeutralButton("Cancel", null)
+        val items = arrayOf("Java", "Kotlin", "Dart")
+        val checkItem = 1
+        alertDialog.setSingleChoiceItems(items, checkItem) { _: DialogInterface?, which: Int ->
+            when (which) {
+                0 -> toast("Java")
+                1 -> toast("Kotlin")
+                2 -> toast("Dart")
+            }
+        }
+        alertDialog.show()
+    }
+
+    private fun progressDialog() {
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setTitle("Circular Progress Dialog")
+        progressDialog.setMessage("Loading...")
+        progressDialog.show()
     }
 
     private fun horizontalProgressDialog() {
@@ -119,52 +165,6 @@ class SecondActivity : AppCompatActivity() {
             AlertDialog.BUTTON_NEUTRAL,
             "OK"
         ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-        alertDialog.show()
-    }
-
-    private fun confirmDialog() {
-        val alertDialog = AlertDialog.Builder(this)
-            .create()
-        alertDialog.setTitle("Confirm AlertDialog")
-        alertDialog.setMessage("This is Confirm Alert Dialog")
-        alertDialog.setButton(
-            AlertDialog.BUTTON_POSITIVE,
-            "ACCEPT"
-        ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-        alertDialog.setButton(
-            AlertDialog.BUTTON_NEGATIVE,
-            "DECLINE"
-        ) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-        alertDialog.show()
-    }
-
-    private fun multiSelectionDialog() {
-        val choices = arrayOf<CharSequence>("Choice 1", "Choice 2", "Choice 3")
-        val choicesInitial = booleanArrayOf(true, false, true)
-        val alertDialog =
-            AlertDialog.Builder(this).setTitle("Choice Option").setPositiveButton("Accept", null)
-                .setNeutralButton("Cancel", null).setMultiChoiceItems(
-                    choices,
-                    choicesInitial
-                ) { _: DialogInterface?, _: Int, _: Boolean -> }
-        alertDialog.show()
-    }
-
-    private fun singleChoiceDialog() {
-        val alertDialog =
-            AlertDialog.Builder(this)
-        alertDialog.setTitle("Single Choice Dialog")
-        alertDialog.setPositiveButton("OK", null)
-        alertDialog.setNeutralButton("Cancel", null)
-        val items = arrayOf("Java", "Kotlin", "Dart")
-        val checkItem = 1
-        alertDialog.setSingleChoiceItems(items, checkItem) { _: DialogInterface?, which: Int ->
-            when (which) {
-                0 -> toast("Java")
-                1 -> toast("Kotlin")
-                2 -> toast("Dart")
-            }
-        }
         alertDialog.show()
     }
 }
