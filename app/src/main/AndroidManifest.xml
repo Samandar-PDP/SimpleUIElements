@@ -16,7 +16,7 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FiveThActivity"
+            android:name=".activity.TimeActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ForthActivity"
@@ -25,7 +25,7 @@
             android:name=".activity.ThirdActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.TimeActivity"
+            android:name=".activity.FiveThActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
